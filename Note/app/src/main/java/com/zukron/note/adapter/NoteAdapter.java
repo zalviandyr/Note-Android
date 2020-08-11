@@ -102,7 +102,11 @@ public class NoteAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 ArrayList<Boolean> checks = listNote.getChecks();
                 ArrayList<String> items = listNote.getItems();
 
-                for (int i = 0; i < checks.size(); i++) {
+                // mengatasi jika isi nya lebih dari 4 item
+                // mencegak out of bound
+                int countCheckbox = Math.min(checks.size(), 4);
+
+                for (int i = 0; i < countCheckbox; i++) {
                     holder2.checkBoxes.get(i).setVisibility(View.VISIBLE);
                     holder2.textViews.get(i).setVisibility(View.VISIBLE);
 
