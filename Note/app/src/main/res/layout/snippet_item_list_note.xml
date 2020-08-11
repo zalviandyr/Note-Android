@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mcv_snippet_item_list_note"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:checkable="true"
+    android:clickable="true"
+    android:focusable="true"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="0dp"
+    app:cardUseCompatPadding="true"
+    tools:cardBackgroundColor="@color/cardBgPink">
+
+    <RelativeLayout
+        android:id="@+id/rl_snippet_item_list_note"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="15dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="15dp"
+        android:paddingBottom="10dp">
+
+        <TextView
+            android:id="@+id/tv_title_snippet_item_list_note"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:textColor="@android:color/white"
+            android:textSize="25sp"
+            tools:text="@string/about_me" />
+
+        <LinearLayout
+            android:id="@+id/_ll_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_title_snippet_item_list_note"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/cb_snippet_item_list_note_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="false"
+                android:theme="@style/AppTheme.Checkbox" />
+
+            <TextView
+                android:id="@+id/tv_snippet_item_list_note_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorTextBody"
+                android:textSize="15sp"
+                tools:text="Sate" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/_ll_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/_ll_1"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/cb_snippet_item_list_note_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="false"
+                android:theme="@style/AppTheme.Checkbox" />
+
+            <TextView
+                android:id="@+id/tv_snippet_item_list_note_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorTextBody"
+                android:textSize="15sp"
+                tools:text="Sate" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/_ll_3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/_ll_2"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/cb_snippet_item_list_note_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="false"
+                android:theme="@style/AppTheme.Checkbox" />
+
+            <TextView
+                android:id="@+id/tv_snippet_item_list_note_3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorTextBody"
+                android:textSize="15sp"
+                tools:text="Sate" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/_ll_4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/_ll_3"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/cb_snippet_item_list_note_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="false"
+                android:theme="@style/AppTheme.Checkbox" />
+
+            <TextView
+                android:id="@+id/tv_snippet_item_list_note_4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorTextBody"
+                android:textSize="15sp"
+                tools:text="Sate" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_modified_date_snippet_item_list_note"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/_ll_4"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/colorTextBody"
+            tools:text="@string/_24_mar" />
+    </RelativeLayout>
+</com.google.android.material.card.MaterialCardView>

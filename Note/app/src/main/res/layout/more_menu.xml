@@ -1,0 +1,101 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/ll_more_menu"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/mt_create"
+    android:layout_alignParentBottom="true"
+    android:layout_marginStart="10dp"
+    android:layout_marginEnd="10dp"
+    android:background="@drawable/round_bg_color"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_add_default_note"
+        style="@style/App.Button.Icon"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="start|center_vertical"
+        android:text="@string/default_note"
+        android:textAllCaps="false"
+        android:textColor="@android:color/black"
+        android:textSize="17sp"
+        app:icon="@drawable/ic_baseline_notes_24"
+        app:iconPadding="10dp"
+        app:iconTint="@android:color/black" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_add_list_note"
+        style="@style/App.Button.Icon"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="start|center_vertical"
+        android:text="@string/list_note"
+        android:textAllCaps="false"
+        android:textColor="@android:color/black"
+        android:textSize="17sp"
+        app:icon="@drawable/ic_baseline_list_24"
+        app:iconPadding="10dp"
+        app:iconTint="@android:color/black" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_add_long_note"
+        style="@style/App.Button.Icon"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="start|center_vertical"
+        android:text="@string/long_note"
+        android:textAllCaps="false"
+        android:textColor="@android:color/black"
+        android:textSize="17sp"
+        app:icon="@drawable/ic_baseline_list_24"
+        app:iconPadding="10dp"
+        app:iconTint="@android:color/black" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_pink_bg_create"
+            style="@style/App.Button.Icon"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginEnd="10dp"
+            app:backgroundTint="@color/cardBgPink"
+            app:strokeColor="@android:color/darker_gray"
+            app:strokeWidth="2dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_blue_bg_create"
+            style="@style/App.Button.Icon"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginEnd="10dp"
+            app:backgroundTint="@color/colorBlue"
+            app:strokeColor="@android:color/darker_gray"
+            app:strokeWidth="2dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_violet_bg_create"
+            style="@style/App.Button.Icon"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginEnd="10dp"
+            app:backgroundTint="@color/cardBgViolet"
+            app:strokeColor="@android:color/darker_gray"
+            app:strokeWidth="2dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_orange_bg_create"
+            style="@style/App.Button.Icon"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            app:backgroundTint="@color/cardBgOrange"
+            app:strokeColor="@android:color/darker_gray"
+            app:strokeWidth="2dp" />
+    </LinearLayout>
+</LinearLayout>

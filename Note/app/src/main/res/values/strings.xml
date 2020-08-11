@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Note</string>
+    <string name="favorites">Favorites</string>
+    <string name="lorem">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</string>
+    <string name="about_me">About me</string>
+    <string name="_24_mar">24 Mar</string>
+    <string name="create">Create</string>
+    <string name="save">Save</string>
+    <string name="title">Title</string>
+    <string name="default_note">Default Note</string>
+    <string name="list_note">List Note</string>
+    <string name="created">Created</string>
+    <string name="last_modified">Last modified</string>
+    <string name="item">item</string>
+    <string name="long_note">Long Note</string>
+</resources>
