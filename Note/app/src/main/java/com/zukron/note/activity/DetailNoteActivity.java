@@ -249,7 +249,7 @@ public class DetailNoteActivity extends AppCompatActivity implements View.OnClic
 
     private void setDialogMoreMenu() {
         dialogPlus = DialogPlus.newDialog(this)
-                .setExpanded(true, 600)
+                .setExpanded(true)
                 .setGravity(Gravity.TOP)
                 .setExpanded(true)
                 .setOnClickListener(this)
@@ -270,9 +270,9 @@ public class DetailNoteActivity extends AppCompatActivity implements View.OnClic
         btnFavCreate.setChecked(btnFavCreate.isChecked());
 
         if (btnFavCreate.isChecked()) {
-            btnFavCreate.setIcon(getDrawable(R.drawable.ic_baseline_favorite_border_24));
+            btnFavCreate.setIcon(ContextCompat.getDrawable(this, R.drawable.ic_baseline_favorite_border_24));
         } else {
-            btnFavCreate.setIcon(getDrawable(R.drawable.ic_baseline_favorite_24));
+            btnFavCreate.setIcon(ContextCompat.getDrawable(this, R.drawable.ic_baseline_favorite_24));
         }
     }
 
