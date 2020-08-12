@@ -49,6 +49,8 @@
                 android:id="@+id/tv_snippet_item_list_note_1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
                 android:textColor="@color/colorTextBody"
                 android:textSize="15sp"
                 tools:text="Sate" />
@@ -72,6 +74,8 @@
                 android:id="@+id/tv_snippet_item_list_note_2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
                 android:textColor="@color/colorTextBody"
                 android:textSize="15sp"
                 tools:text="Sate" />
@@ -95,6 +99,8 @@
                 android:id="@+id/tv_snippet_item_list_note_3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
                 android:textColor="@color/colorTextBody"
                 android:textSize="15sp"
                 tools:text="Sate" />
@@ -118,6 +124,8 @@
                 android:id="@+id/tv_snippet_item_list_note_4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
                 android:textColor="@color/colorTextBody"
                 android:textSize="15sp"
                 tools:text="Sate" />
