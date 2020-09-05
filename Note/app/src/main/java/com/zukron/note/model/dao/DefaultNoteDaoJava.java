@@ -14,10 +14,10 @@ import java.util.ArrayList;
  * Project name is Note
  * Created by Zukron Alviandy R on 8/10/2020
  */
-public class DefaultNoteDao {
+public class DefaultNoteDaoJava {
     private SQLiteDatabase database;
 
-    public DefaultNoteDao(Context context) {
+    public DefaultNoteDaoJava(Context context) {
         database = Database.getDatabase(context);
     }
 

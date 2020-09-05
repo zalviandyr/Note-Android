@@ -2,7 +2,7 @@
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/mcv_snippet_item_list_note"
+    android:id="@+id/mcv_snippet"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:checkable="true"
@@ -14,7 +14,6 @@
     tools:cardBackgroundColor="@color/cardBgPink">
 
     <RelativeLayout
-        android:id="@+id/rl_snippet_item_list_note"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingStart="15dp"
@@ -23,7 +22,7 @@
         android:paddingBottom="10dp">
 
         <TextView
-            android:id="@+id/tv_title_snippet_item_list_note"
+            android:id="@+id/tv_title_snippet"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
@@ -35,18 +34,18 @@
             android:id="@+id/_ll_1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/tv_title_snippet_item_list_note"
+            android:layout_below="@id/tv_title_snippet"
             android:orientation="horizontal">
 
             <CheckBox
-                android:id="@+id/cb_snippet_item_list_note_1"
+                android:id="@+id/cb_snippet_item_1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:clickable="false"
                 android:theme="@style/AppTheme.Checkbox" />
 
             <TextView
-                android:id="@+id/tv_snippet_item_list_note_1"
+                android:id="@+id/tv_snippet_item_1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
@@ -64,14 +63,14 @@
             android:orientation="horizontal">
 
             <CheckBox
-                android:id="@+id/cb_snippet_item_list_note_2"
+                android:id="@+id/cb_snippet_item_2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:clickable="false"
                 android:theme="@style/AppTheme.Checkbox" />
 
             <TextView
-                android:id="@+id/tv_snippet_item_list_note_2"
+                android:id="@+id/tv_snippet_item_2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
@@ -89,14 +88,14 @@
             android:orientation="horizontal">
 
             <CheckBox
-                android:id="@+id/cb_snippet_item_list_note_3"
+                android:id="@+id/cb_snippet_item_3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:clickable="false"
                 android:theme="@style/AppTheme.Checkbox" />
 
             <TextView
-                android:id="@+id/tv_snippet_item_list_note_3"
+                android:id="@+id/tv_snippet_item_3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
@@ -114,14 +113,14 @@
             android:orientation="horizontal">
 
             <CheckBox
-                android:id="@+id/cb_snippet_item_list_note_4"
+                android:id="@+id/cb_snippet_item_4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:clickable="false"
                 android:theme="@style/AppTheme.Checkbox" />
 
             <TextView
-                android:id="@+id/tv_snippet_item_list_note_4"
+                android:id="@+id/tv_snippet_item_4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
@@ -132,7 +131,7 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/tv_modified_date_snippet_item_list_note"
+            android:id="@+id/tv_modified_date_snippet"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/_ll_4"

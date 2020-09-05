@@ -1,9 +1,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/ll_more_menu"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_below="@id/mt_create"
+    android:layout_below="@id/material_toolbar"
     android:layout_alignParentBottom="true"
     android:layout_marginStart="10dp"
     android:layout_marginEnd="10dp"
@@ -60,7 +59,7 @@
         android:orientation="horizontal">
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_pink_bg_create"
+            android:id="@+id/btn_pink_bg"
             style="@style/App.Button.Icon"
             android:layout_width="32dp"
             android:layout_height="32dp"
@@ -70,7 +69,7 @@
             app:strokeWidth="2dp" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_blue_bg_create"
+            android:id="@+id/btn_blue_bg"
             style="@style/App.Button.Icon"
             android:layout_width="32dp"
             android:layout_height="32dp"
@@ -80,7 +79,7 @@
             app:strokeWidth="2dp" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_violet_bg_create"
+            android:id="@+id/btn_violet_bg"
             style="@style/App.Button.Icon"
             android:layout_width="32dp"
             android:layout_height="32dp"
@@ -90,7 +89,7 @@
             app:strokeWidth="2dp" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_orange_bg_create"
+            android:id="@+id/btn_orange_bg"
             style="@style/App.Button.Icon"
             android:layout_width="32dp"
             android:layout_height="32dp"

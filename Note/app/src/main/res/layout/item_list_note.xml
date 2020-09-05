@@ -10,7 +10,7 @@
         android:layout_height="wrap_content">
 
         <CheckBox
-            android:id="@+id/cb_item_list_note"
+            android:id="@+id/cb_item"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
@@ -21,12 +21,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_toStartOf="@id/btn_remove_item_list_note"
-            android:layout_toEndOf="@id/cb_item_list_note"
+            android:layout_toStartOf="@id/btn_remove_item"
+            android:layout_toEndOf="@id/cb_item"
             android:theme="@style/AppTheme.TextInputLayout">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/input_item_list_note"
+                android:id="@+id/input_item"
                 style="@style/App.TextInputEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -38,17 +38,17 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_remove_item_list_note"
+            android:id="@+id/btn_remove_item"
             style="@style/App.Button.Icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_toStartOf="@id/btn_add_item_list_note"
+            android:layout_toStartOf="@id/btn_add_item"
             app:icon="@drawable/ic_baseline_remove_24"
             app:iconTint="@android:color/black" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_add_item_list_note"
+            android:id="@+id/btn_add_item"
             style="@style/App.Button.Icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

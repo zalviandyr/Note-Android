@@ -2,7 +2,7 @@
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/mcv_snippet_item_default_note"
+    android:id="@+id/mcv_snippet"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:checkable="true"
@@ -22,7 +22,7 @@
         android:paddingBottom="10dp">
 
         <TextView
-            android:id="@+id/tv_title_snippet_item_default_note"
+            android:id="@+id/tv_title_snippet"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@android:color/white"
@@ -30,10 +30,10 @@
             tools:text="@string/about_me" />
 
         <TextView
-            android:id="@+id/tv_body_snippet_item_default_note"
+            android:id="@+id/tv_body_snippet"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/tv_title_snippet_item_default_note"
+            android:layout_below="@id/tv_title_snippet"
             android:layout_marginTop="10dp"
             android:ellipsize="end"
             android:maxLines="3"
@@ -41,10 +41,10 @@
             tools:text="@string/lorem" />
 
         <TextView
-            android:id="@+id/tv_modified_date_snippet_item_default_note"
+            android:id="@+id/tv_modified_date_snippet"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/tv_body_snippet_item_default_note"
+            android:layout_below="@id/tv_body_snippet"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="10dp"
             android:textColor="@color/colorTextBody"

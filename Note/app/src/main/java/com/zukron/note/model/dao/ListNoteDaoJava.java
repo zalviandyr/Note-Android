@@ -10,15 +10,16 @@ import com.zukron.note.model.Note;
 import com.zukron.note.util.Database;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Project name is Note
  * Created by Zukron Alviandy R on 8/10/2020
  */
-public class ListNoteDao {
+public class ListNoteDaoJava {
     private SQLiteDatabase database;
 
-    public ListNoteDao(Context context) {
+    public ListNoteDaoJava(Context context) {
         database = Database.getDatabase(context);
     }
 
@@ -26,7 +27,7 @@ public class ListNoteDao {
         ArrayList<Integer> id = new ArrayList<>();
         ArrayList<ListNote> listNotes = new ArrayList<>();
 
-        Cursor allId = database.rawQuery("SELECT id FROM note WHERE type=" + Note.Type.ListNote + " ORDER BY id DESC", null);
+        Cursor allId = database.rawQuery("SELECT id FROM note WHERE type=" + Note.Type.listNote + " ORDER BY id DESC", null);
         if (allId.moveToFirst()) {
             do {
                 id.add(allId.getInt(0));
@@ -97,15 +98,15 @@ public class ListNoteDao {
         cursor.moveToLast();
         int lastId = cursor.getInt(0);
 
-        for (int i = 0; i < listNote.getItems().size(); i++) {
+        for (int i = 0; i < listNote.getItemList().size(); i++) {
             String sql = "INSERT INTO list_note(id, title, checked, item) VALUES (?, ?, ?, ?)";
             SQLiteStatement statement = database.compileStatement(sql);
             statement.bindLong(1, lastId);
             statement.bindString(2, listNote.getTitle());
 
-            int checked = listNote.getChecks().get(i) ? 1 : 0;
+            int checked = listNote.getCheckList().get(i) ? 1 : 0;
             statement.bindLong(3, checked);
-            statement.bindString(4, listNote.getItems().get(i));
+            statement.bindString(4, listNote.getItemList().get(i));
 
             statement.executeInsert();
         }
@@ -114,8 +115,8 @@ public class ListNoteDao {
     }
 
     public void update(ListNote listNote) {
-        ArrayList<Boolean> checks = listNote.getChecks();
-        ArrayList<String> items = listNote.getItems();
+        List<Boolean> checks = listNote.getCheckList();
+        List<String> items = listNote.getItemList();
 
         // hapus yang lama dan tambah kan yang baru
         SQLiteStatement statementDelete = database.compileStatement("DELETE FROM list_note WHERE id = ?");

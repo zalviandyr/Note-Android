@@ -16,12 +16,11 @@
         app:elevation="0dp">
 
         <RelativeLayout
-            android:id="@+id/relative_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <com.google.android.material.appbar.MaterialToolbar
-                android:id="@+id/mt_create"
+                android:id="@+id/material_toolbar"
                 android:layout_width="wrap_content"
                 android:layout_height="?attr/actionBarSize"
                 app:navigationIcon="@drawable/ic_baseline_arrow_back_ios_24" />
@@ -31,12 +30,12 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
-                android:layout_toEndOf="@id/mt_create"
+                android:layout_toEndOf="@id/material_toolbar"
                 android:gravity="end"
                 android:orientation="horizontal">
 
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btn_save_create"
+                    android:id="@+id/btn_save"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/save"
@@ -44,7 +43,7 @@
                     android:textColor="@color/cardBgOrange" />
 
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btn_delete_create"
+                    android:id="@+id/btn_delete"
                     style="@style/App.Button.Icon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -52,7 +51,7 @@
                     app:iconTint="@android:color/white" />
 
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btn_fav_create"
+                    android:id="@+id/btn_fav"
                     style="@style/App.Button.Icon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -61,7 +60,7 @@
                     app:iconTint="@android:color/white" />
 
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btn_more_create"
+                    android:id="@+id/btn_more"
                     style="@style/App.Button.Icon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -81,7 +80,7 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <FrameLayout
-            android:id="@+id/fl_note_create"
+            android:id="@+id/fl_note"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:nestedScrollingEnabled="true"
@@ -106,7 +105,7 @@
             android:textColor="@color/colorTextBody" />
 
         <TextView
-            android:id="@+id/tv_last_modified_create"
+            android:id="@+id/tv_last_modified"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -117,14 +116,14 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toStartOf="@id/tv_created_create"
-            android:layout_toEndOf="@id/tv_last_modified_create"
+            android:layout_toStartOf="@id/tv_created"
+            android:layout_toEndOf="@id/tv_last_modified"
             android:gravity="end"
             android:text="@string/created"
             android:textColor="@color/colorTextBody" />
 
         <TextView
-            android:id="@+id/tv_created_create"
+            android:id="@+id/tv_created"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"

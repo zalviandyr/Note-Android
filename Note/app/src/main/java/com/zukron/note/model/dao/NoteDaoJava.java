@@ -16,10 +16,10 @@ import java.util.ArrayList;
  * Project name is Note
  * Created by Zukron Alviandy R on 8/10/2020
  */
-public class NoteDao {
+public class NoteDaoJava {
     private SQLiteDatabase database;
 
-    public NoteDao(Context context) {
+    public NoteDaoJava(Context context) {
         database = Database.getDatabase(context);
     }
 
@@ -49,8 +49,8 @@ public class NoteDao {
         SQLiteStatement statement = database.compileStatement(sql);
         statement.bindString(1, note.getTitle());
         statement.bindLong(2, note.getType());
-        statement.bindString(3, note.getModified().toString());
-        statement.bindString(4, note.getCreated().toString());
+        statement.bindString(3, note.getModifiedDate().toString());
+        statement.bindString(4, note.getCreatedDate().toString());
         statement.bindLong(5, note.getColor());
 
         statement.executeInsert();
@@ -60,7 +60,7 @@ public class NoteDao {
         String sql = "UPDATE note SET title = ?, modified = ?, color = ? where id = ?";
         SQLiteStatement statement = database.compileStatement(sql);
         statement.bindString(1, note.getTitle());
-        statement.bindString(2, note.getModified().toString());
+        statement.bindString(2, note.getModifiedDate().toString());
         statement.bindLong(3, note.getColor());
         statement.bindLong(4, note.getId());
 

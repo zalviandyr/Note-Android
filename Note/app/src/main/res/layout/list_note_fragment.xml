@@ -13,7 +13,7 @@
         android:theme="@style/AppTheme.TextInputLayout">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/input_title_note_list"
+            android:id="@+id/input_title"
             style="@style/App.TextInputEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -23,7 +23,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_note_list"
+        android:id="@+id/rv_note"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@android:color/transparent"
