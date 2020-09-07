@@ -25,6 +25,8 @@
             android:id="@+id/tv_title_snippet"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="2"
             android:textColor="@android:color/white"
             android:textSize="25sp"
             tools:text="@string/about_me" />

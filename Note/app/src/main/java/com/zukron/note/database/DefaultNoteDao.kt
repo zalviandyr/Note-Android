@@ -13,15 +13,12 @@ import com.zukron.note.model.DefaultNote
  */
 @Dao
 interface DefaultNoteDao {
-    @Query("SELECT * FROM default_note WHERE default_note_id = :id")
-    suspend fun get(id: Int): DefaultNote
+    @Query("SELECT * FROM default_note WHERE note_id = :id")
+    suspend fun get(id: Long): DefaultNote
 
     @Insert
     suspend fun insert(defaultNote: DefaultNote)
 
     @Update
     suspend fun update(defaultNote: DefaultNote)
-
-    @Query("DELETE FROM default_note WHERE default_note_id = :id")
-    suspend fun delete(id: Int)
 }

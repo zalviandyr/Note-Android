@@ -13,13 +13,9 @@ import com.zukron.note.model.*
     Note::class,
     DefaultNote::class,
     ListNote::class,
-    NoteAndDefaultNote::class,
-    NoteAndListNote::class
 ], version = 1)
 abstract class NoteDatabase : RoomDatabase() {
     abstract fun noteDao(): NoteDao
     abstract fun defaultNoteDao(): DefaultNoteDao
     abstract fun listNoteDao(): ListNoteDao
-    abstract fun noteAndDefaultNoteDao(): NoteAndDefaultNoteDao
-    abstract fun noteAndListNoteDao(): NoteAndListNoteDao
 }

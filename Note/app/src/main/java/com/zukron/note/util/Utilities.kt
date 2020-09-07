@@ -15,5 +15,11 @@ object Utilities {
         return this.format(dateTimeFormatter)
     }
 
+    fun String.formatToDate(): String {
+        val localDate = LocalDate.parse(this)
+        val dateTimeFormatter = DateTimeFormatter.ofPattern("dd LLL")
+        return localDate.format(dateTimeFormatter)
+    }
+
     fun String.toEditable(): Editable = Editable.Factory.getInstance().newEditable(this)
 }

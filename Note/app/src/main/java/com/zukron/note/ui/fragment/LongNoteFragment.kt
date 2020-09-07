@@ -1,4 +1,4 @@
-package com.zukron.note.fragment
+package com.zukron.note.ui.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,10 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.zukron.note.R
 import com.zukron.note.model.DefaultNote
-import com.zukron.note.model.Note
-import com.zukron.note.model.dao.DefaultNoteDaoJava
+import com.zukron.note.ui.viewmodel.NoteViewModel
 import com.zukron.note.util.Utilities.toEditable
 import kotlinx.android.synthetic.main.default_note_fragment.*
 
@@ -21,20 +21,20 @@ import kotlinx.android.synthetic.main.default_note_fragment.*
 class LongNoteFragment : Fragment() {
     companion object {
         const val TAG: String = "LongNoteFragment"
-        private const val BUNDLE_NOTE = "bundle_note"
+        private const val BUNDLE_NOTE_ID = "bundle_note_id"
 
-        fun newInstance(note: Note): LongNoteFragment {
+        fun newInstance(id: Long): LongNoteFragment {
             val longNoteFragment = LongNoteFragment()
             val bundle = Bundle()
-            bundle.putParcelable(BUNDLE_NOTE, note)
+            bundle.putLong(BUNDLE_NOTE_ID, id)
 
             longNoteFragment.arguments = bundle
             return longNoteFragment
         }
     }
 
-    // 0 if user want to insert
-    private var idNote: Int = 0
+    private lateinit var noteViewModel: NoteViewModel
+    private var _defaultNote: DefaultNote? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.default_note_fragment, container, false)
@@ -43,29 +43,40 @@ class LongNoteFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val defaultNoteDaoJava = DefaultNoteDaoJava(context)
-        // if user want to update
-        if (arguments != null) {
-            val note: Note? = arguments!!.getParcelable(BUNDLE_NOTE)
+        // note id from Note entity
+        val noteId = arguments?.getLong(BUNDLE_NOTE_ID, 0) ?: 0
 
-            if (note != null) {
-                val defaultNote = defaultNoteDaoJava.get(note.id)
+        // view model
+        noteViewModel = ViewModelProvider(this, ViewModelProvider
+                .AndroidViewModelFactory(activity!!.application))
+                .get(NoteViewModel::class.java)
 
-                idNote = defaultNote.id
-                input_title.text = defaultNote.title.toEditable()
-                input_body.text = defaultNote.body.toEditable()
+        noteViewModel.setNoteId(noteId)
+        noteViewModel.defaultNote.observe(this) {
+            if (it != null) {
+                input_title.text = it.title.toEditable()
+                input_body.text = it.body.toEditable()
+
+                _defaultNote = it
             }
         }
     }
 
     fun getNote(): DefaultNote? {
-        var defaultNote: DefaultNote? = null
+        var defaultNote: DefaultNote? = _defaultNote
 
         if (validate()) {
             val title = input_title.text.toString().trim()
             val body = input_body.text.toString().trim()
 
-            defaultNote = DefaultNote(idNote, title, body)
+            // insert
+            if (defaultNote == null) {
+                defaultNote = DefaultNote(body)
+            }
+
+            //update
+            defaultNote.body = body
+            defaultNote.title = title
         } else {
             Toast.makeText(context, "Judul atau isi tidak boleh kosong", Toast.LENGTH_SHORT).show()
         }

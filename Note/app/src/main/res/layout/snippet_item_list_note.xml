@@ -26,115 +26,25 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
+            android:ellipsize="end"
+            android:maxLines="2"
             android:textColor="@android:color/white"
             android:textSize="25sp"
             tools:text="@string/about_me" />
 
-        <LinearLayout
-            android:id="@+id/_ll_1"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_snippet"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/tv_title_snippet"
-            android:orientation="horizontal">
-
-            <CheckBox
-                android:id="@+id/cb_snippet_item_1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:clickable="false"
-                android:theme="@style/AppTheme.Checkbox" />
-
-            <TextView
-                android:id="@+id/tv_snippet_item_1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:textColor="@color/colorTextBody"
-                android:textSize="15sp"
-                tools:text="Sate" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/_ll_2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/_ll_1"
-            android:orientation="horizontal">
-
-            <CheckBox
-                android:id="@+id/cb_snippet_item_2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:clickable="false"
-                android:theme="@style/AppTheme.Checkbox" />
-
-            <TextView
-                android:id="@+id/tv_snippet_item_2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:textColor="@color/colorTextBody"
-                android:textSize="15sp"
-                tools:text="Sate" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/_ll_3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/_ll_2"
-            android:orientation="horizontal">
-
-            <CheckBox
-                android:id="@+id/cb_snippet_item_3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:clickable="false"
-                android:theme="@style/AppTheme.Checkbox" />
-
-            <TextView
-                android:id="@+id/tv_snippet_item_3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:textColor="@color/colorTextBody"
-                android:textSize="15sp"
-                tools:text="Sate" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/_ll_4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/_ll_3"
-            android:orientation="horizontal">
-
-            <CheckBox
-                android:id="@+id/cb_snippet_item_4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:clickable="false"
-                android:theme="@style/AppTheme.Checkbox" />
-
-            <TextView
-                android:id="@+id/tv_snippet_item_4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:textColor="@color/colorTextBody"
-                android:textSize="15sp"
-                tools:text="Sate" />
-        </LinearLayout>
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/item_list_note_snippet" />
 
         <TextView
             android:id="@+id/tv_modified_date_snippet"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/_ll_4"
+            android:layout_below="@id/rv_snippet"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="10dp"
             android:textColor="@color/colorTextBody"

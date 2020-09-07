@@ -18,10 +18,5 @@ import org.junit.runner.RunWith
 class TestingDatabase {
     @Test
     fun testRepo() {
-        val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        val db = NoteRepository.getInstance(appContext)
-        CoroutineScope(IO).launch {
-            println(db?.noteDao()!!.getAll())
-        }
     }
 }

@@ -4,7 +4,6 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.CheckBox
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
@@ -13,22 +12,39 @@ import com.google.android.material.card.MaterialCardView
 import com.zukron.note.R
 import com.zukron.note.model.DefaultNote
 import com.zukron.note.model.ListNote
+import com.zukron.note.model.MixNote
 import com.zukron.note.model.Note
-import com.zukron.note.util.Utilities.formatToString
 
 /**
  * Project name is Note
  * Created by Zukron Alviandy R on 9/4/2020
  * Contact me if any issues on zukronalviandy@gmail.com
  */
-class NoteAdapter(private val context: Context, private val noteList: List<Note>) :
-        RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class NoteAdapter(
+        private val context: Context
+) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    var defaultNoteList: List<DefaultNote>? = null
-    var listNoteList: List<ListNote>? = null
+    var mixNote: MixNote? = null
+        set(value) {
+            noteList = value?.noteList
+            defaultNoteList = value?.defaultNoteList
+            listNoteList = value?.listNoteList
+
+            shiftDefaultNote = 0
+            shiftListNote = 0
+
+            notifyDataSetChanged()
+
+            field = value
+        }
+
+    private var noteList: List<Note>? = null
+    private var defaultNoteList: List<DefaultNote>? = null
+    private var listNoteList: List<List<ListNote>>? = null
+    private var shiftDefaultNote: Int = 0
+    private var shiftListNote: Int = 0
     private var onClickSelected: OnClickSelected? = null
-    private var shiftDefaultNote = 0
-    private var shiftListNote = 0
+    private val recyclerViewPool = RecyclerView.RecycledViewPool()
 
     fun setOnClickSelected(onClickSelected: OnClickSelected) {
         this.onClickSelected = onClickSelected
@@ -47,72 +63,66 @@ class NoteAdapter(private val context: Context, private val noteList: List<Note>
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        val note = noteList[position]
+        val note = noteList?.get(position)
 
-        when (holder.itemViewType) {
-            Note.Type.defaultNote, Note.Type.longNote -> {
-                if (holder.itemViewType == Note.Type.longNote) {
-                    val layoutParams = holder.itemView.layoutParams as StaggeredGridLayoutManager.LayoutParams
-                    layoutParams.isFullSpan = true
+        if (note != null) {
+            when (holder.itemViewType) {
+                Note.Type.defaultNote, Note.Type.longNote -> {
+                    if (holder.itemViewType == Note.Type.longNote) {
+                        val layoutParams = holder.itemView.layoutParams as StaggeredGridLayoutManager.LayoutParams
+                        layoutParams.isFullSpan = true
+                    }
+
+                    val defaultNoteHolder = holder as DefaultNoteHolder
+                    val defaultNote = defaultNoteList?.get(shiftDefaultNote)
+
+                    if (defaultNote != null) {
+                        defaultNoteHolder.materialCard.setCardBackgroundColor(
+                                ContextCompat.getColor(context, note.color)
+                        )
+                        defaultNoteHolder.tvTitle.text = defaultNote.title
+                        defaultNoteHolder.tvBody.text = defaultNote.body
+                        defaultNoteHolder.tvModifiedDate.text = note.modifiedDate
+                        defaultNoteHolder.materialCard.setOnClickListener {
+                            onClickSelected?.onClickSelected(note)
+                        }
+
+                        shiftDefaultNote++
+                    }
                 }
 
-                val defaultNoteHolder = holder as DefaultNoteHolder
-                val defaultNote = defaultNoteList?.get(shiftDefaultNote)
+                Note.Type.listNote -> {
+                    val listNoteHolder = holder as ListNoteHolder
+                    val listNote = listNoteList?.get(shiftListNote)
 
-                if (defaultNote != null) {
-                    defaultNoteHolder.materialCard.setCardBackgroundColor(
-                            ContextCompat.getColor(context, note.color)
-                    )
-                    defaultNoteHolder.tvTitle.text = defaultNote.title
-                    defaultNoteHolder.tvBody.text = defaultNote.body
-                    defaultNoteHolder.tvModifiedDate.text = note.modifiedDate.formatToString()
+                    if (listNote != null) {
+                        listNoteHolder.tvTitle.text = listNote[0].title
+                        listNoteHolder.tvModifiedDate.text = note.modifiedDate
+                        listNoteHolder.materialCard.setCardBackgroundColor(
+                                ContextCompat.getColor(context, note.color)
+                        )
 
-                    defaultNoteHolder.materialCard.setOnClickListener {
-                        onClickSelected?.onClickSelected(note)
+                        val itemNoteListAdapter = ItemNoteListAdapter(context, listNote)
+                        holder.recyclerView.adapter = itemNoteListAdapter
+                        holder.recyclerView.setRecycledViewPool(recyclerViewPool)
+                        holder.materialCard.setOnClickListener {
+                            onClickSelected?.onClickSelected(note)
+                        }
+
+                        shiftListNote++
                     }
-                    shiftDefaultNote++
-                }
-            }
-
-            Note.Type.listNote -> {
-                val listNoteHolder = holder as ListNoteHolder
-                val listNote = listNoteList?.get(shiftListNote)
-
-                if (listNote != null) {
-                    // to avoid if item more than 4
-                    val checkBoxSize = listNote.checkList.size
-                            .coerceAtMost(4)
-
-                    for (i in 0 until checkBoxSize) {
-                        listNoteHolder.checkBoxesList[i].visibility = View.VISIBLE
-                        listNoteHolder.textViewsList[i].visibility = View.VISIBLE
-
-                        listNoteHolder.checkBoxesList[i].isChecked = listNote.checkList[i]
-                        listNoteHolder.textViewsList[i].text = listNote.itemList[i]
-                    }
-
-                    listNoteHolder.materialCard.setCardBackgroundColor(
-                            ContextCompat.getColor(context, note.color)
-                    )
-                    listNoteHolder.tvTitle.text = listNote.title
-                    listNoteHolder.tvModifiedDate.text = note.modifiedDate.formatToString()
-
-                    listNoteHolder.materialCard.setOnClickListener {
-                        onClickSelected?.onClickSelected(note)
-                    }
-                    shiftListNote++
                 }
             }
         }
     }
 
     override fun getItemCount(): Int {
-        return noteList.size
+        return noteList?.size ?: 0
     }
 
     override fun getItemViewType(position: Int): Int {
-        val note = noteList[position]
-        return note.type
+        val note = noteList?.get(position)
+        return note?.type ?: 0
     }
 
     class DefaultNoteHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -126,35 +136,7 @@ class NoteAdapter(private val context: Context, private val noteList: List<Note>
         val materialCard: MaterialCardView = itemView.findViewById(R.id.mcv_snippet)
         val tvTitle: TextView = itemView.findViewById(R.id.tv_title_snippet)
         val tvModifiedDate: TextView = itemView.findViewById(R.id.tv_modified_date_snippet)
-        val checkBoxesList: MutableList<CheckBox> = mutableListOf()
-        val textViewsList: MutableList<TextView> = mutableListOf()
-
-        init {
-            val cb1: CheckBox = itemView.findViewById(R.id.cb_snippet_item_1)
-            val cb2: CheckBox = itemView.findViewById(R.id.cb_snippet_item_2)
-            val cb3: CheckBox = itemView.findViewById(R.id.cb_snippet_item_3)
-            val cb4: CheckBox = itemView.findViewById(R.id.cb_snippet_item_4)
-
-            val tv1: TextView = itemView.findViewById(R.id.tv_snippet_item_1)
-            val tv2: TextView = itemView.findViewById(R.id.tv_snippet_item_2)
-            val tv3: TextView = itemView.findViewById(R.id.tv_snippet_item_3)
-            val tv4: TextView = itemView.findViewById(R.id.tv_snippet_item_4)
-
-            checkBoxesList.add(cb1)
-            checkBoxesList.add(cb2)
-            checkBoxesList.add(cb3)
-            checkBoxesList.add(cb4)
-
-            textViewsList.add(tv1)
-            textViewsList.add(tv2)
-            textViewsList.add(tv3)
-            textViewsList.add(tv4)
-
-            for (i in 0 until checkBoxesList.size) {
-                checkBoxesList[i].visibility = View.GONE
-                textViewsList[i].visibility = View.GONE
-            }
-        }
+        val recyclerView: RecyclerView = itemView.findViewById(R.id.rv_snippet)
     }
 
     fun interface OnClickSelected {

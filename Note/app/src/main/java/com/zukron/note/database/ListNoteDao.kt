@@ -10,15 +10,9 @@ import com.zukron.note.model.ListNote
  */
 @Dao
 interface ListNoteDao {
-    @Query("SELECT * FROM list_note WHERE list_note_id = :id ")
-    suspend fun get(id: Int): ListNote
+    @Query("SELECT * FROM list_note WHERE note_id = :id ")
+    suspend fun getAll(id: Long): List<ListNote>
 
     @Insert
-    suspend fun insert(listNote: ListNote)
-
-    @Update
-    suspend fun update(listNote: ListNote)
-
-    @Query("DELETE FROM list_note WHERE list_note_id = :id")
-    suspend fun delete(id: Int)
+    suspend fun insert(listNote: List<ListNote>)
 }
